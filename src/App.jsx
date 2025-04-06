@@ -19,6 +19,8 @@ function App() {
   const [navBg, setNavBg] = useState("bg-transparent");
   const [menuOpen, setMenuOpen] = useState(false);
 
+  
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -59,6 +61,8 @@ function App() {
     };
   }, [menuOpen]);
 
+  
+
   return (
     <div className="bg-[#0D0F18] min-h-screen flex flex-col items-center text-white">
       {/* Navbar */}
@@ -66,6 +70,14 @@ function App() {
       className={`fixed top-0 left-0 w-full z-50 flex justify-between items-center py-4 px-6 md:px-16 transition-transform duration-300 ease-in-out ${
         showStickyHeader && scrollDirection === "down" ? "translate-y-[-100%] md:translate-y-0" : "translate-y-0"
       } ${navBg}`}
+      onMouseEnter={() => setNavBg("bg-white text-black shadow-md")}
+      onMouseLeave={() =>
+        setNavBg(
+          window.scrollY > 50
+            ? "bg-white text-black shadow-md"
+            : "bg-transparent text-white"
+        )
+      }
         
       >
         {/* Logo */}
